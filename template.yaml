@@ -7,7 +7,7 @@ Resources:
   DeleteRol:
     Type: AWS::IAM::Role
     Properties:
-      RoleName:  sct-vista360-back-rolDeploy-dev
+      RoleName:  sct-delete-rolDeploy-dev
       AssumeRolePolicyDocument:
         Version: 2012-10-17
         Statement:
@@ -19,10 +19,14 @@ Resources:
               - sts:AssumeRole
       Path: /
       Policies:
-        - PolicyName: sct-vista360-back-rolDeploy-dev
+        - PolicyName: sct-delete_rol
           PolicyDocument:
             Version: 2012-10-17
             Statement:
               - Effect: Allow
                 Action: "*"
                 Resource: "*"
+Outputs:
+  ArnRol:
+    Value: !GetAtt DeleteRol.Arn
+    Description:  ARN_ROL
